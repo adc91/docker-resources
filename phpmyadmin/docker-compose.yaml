@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  app:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - 3310:80
+    environment:
+      - PMA_ARBITRARY=1
+      - UPLOAD_LIMIT=512M
+      #- PMA_PORT=3308
+    networks:
+      - mysql5-7_network
+      - mysql8-0_network
+
+networks:
+  mysql5-7_network:
+    external: true
+  mysql8-0_network:
+    external: true
